@@ -1,0 +1,115 @@
+.frame-child26,
+.your-models1 {
+  position: absolute;
+  width: 522px;
+  height: 88px;
+}
+.frame-child26 {
+  top: calc(50% - 37px);
+  left: calc(50% - 603px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-300);
+  backdrop-filter: blur(13.6px);
+}
+.your-models1 {
+  top: 14px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.frame20 {
+  position: absolute;
+  top: 36px;
+  left: 40px;
+  width: 1206px;
+  height: 102px;
+  overflow: hidden;
+}
+.frame-child27 {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-tomato);
+  width: 205px;
+  height: 62px;
+}
+.logout3 {
+  position: absolute;
+  top: 11px;
+  left: 59px;
+  font-size: var(--font-size-3xl);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: left;
+  width: 95px;
+  height: 35px;
+}
+.frame-button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 39px;
+  left: 1041px;
+  width: 205px;
+  height: 59px;
+  overflow: hidden;
+}
+.frame-child28 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-whitesmoke);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 205px;
+  height: 62px;
+}
+.model-11 {
+  position: absolute;
+  top: 13px;
+  left: 22px;
+  font-size: var(--font-size-3xl);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: center;
+  width: 162px;
+  height: 35px;
+}
+.frame21,
+.frame22,
+.frame23 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 218px;
+  left: 537px;
+  width: 205px;
+  height: 62px;
+  overflow: hidden;
+}
+.frame22,
+.frame23 {
+  top: 304px;
+}
+.frame23 {
+  top: 390px;
+}
+.macbook-air-3 {
+  position: relative;
+  background: linear-gradient(180deg, #9181f4, #5038ed);
+  width: 100%;
+  height: 832px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
