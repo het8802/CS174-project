@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./MacBookAir1.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+    <div class="macbook-air-1">
+      <div class="frame">
+        <div class="frame-child"></div>
+        <b class="k-means-clustering">K-Means Clustering</b>
+      </div>
+      <button class="rectangle-parent" id="logout-button">
+        <div class="frame-item"></div>
+        <b class="logout">LOGOUT</b>
+      </button>
+
+        <b class="train-your-data">Train your data</b>
+        <button class="frame1" id="uploadButton">
+          <div class="frame-inner"></div>
+          <b class="upload-file">Upload File</b>
+          <input type="file" id="fileInput" style="display: none;" />
+        </button>
+        <div class="frame2">
+          <b class="or">OR</b>
+          <div class="rectangle-div"></div>
+          <div class="frame-child1"></div>
+        </div>
+        <div class="frame3">
+          <div class="rectangle-textarea-placeholder">
+            <textarea class="rectangle-textarea" id="input-data-text-area" placeholder="Input data..."></textarea>
+          </div>
+        </div>
+        <button class="frame4" id="train-button">
+          <div class="frame-child2"></div>
+          <b class="train">TRAIN</b>
+        </button>
+      <button class="frame5" id="your-models-button">
+        <div class="frame-child3"></div>
+        <b class="your-models">YOUR MODELS</b>
+      </button>
+    </div>
+
+    <script>
+      document.getElementById('uploadButton').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+      });
+
+      document.getElementById('fileInput').addEventListener('change', function () {
+          // Handle the selected file
+          var selectedFile = this.files[0];
+          console.log('Selected file:', selectedFile.name);
+      });
+
+      var frameButton = document.getElementById("logout-button");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./Login.html";
+        });
+      }
+      
+      var frame1 = document.getElementById("train-button");
+      if (frame1) {
+        frame1.addEventListener("click", function (e) {
+          window.location.href = "./MacBookAir2.html";
+        });
+      }
+      </script>
+  </body>
+</html>
