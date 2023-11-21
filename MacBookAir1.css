@@ -1,4 +1,4 @@
-.frame-child {
+.frame-child15 {
   position: absolute;
   top: calc(50% - 37px);
   left: calc(50% - 603px);
@@ -8,7 +8,7 @@
   width: 522px;
   height: 88px;
 }
-.k-means-clustering {
+.k-means-clustering2 {
   position: absolute;
   top: 22px;
   left: 14px;
@@ -16,7 +16,7 @@
   width: 1136px;
   height: 80px;
 }
-.frame {
+.frame12 {
   position: absolute;
   top: 36px;
   left: 40px;
@@ -24,7 +24,7 @@
   height: 102px;
   overflow: hidden;
 }
-.frame-item {
+.frame-child16 {
   position: absolute;
   top: -3px;
   left: 0;
@@ -33,7 +33,7 @@
   width: 205px;
   height: 62px;
 }
-.logout {
+.logout2 {
   position: absolute;
   top: 11px;
   left: 59px;
@@ -45,7 +45,7 @@
   width: 95px;
   height: 35px;
 }
-.rectangle-parent {
+.rectangle-container {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -67,7 +67,7 @@
   width: 253px;
   height: 49px;
 }
-.frame-inner {
+.frame-child17 {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,10 +76,7 @@
   width: 331px;
   height: 85px;
 }
-input[type="file"] {
-  display:none;
-}
-.upload-file {
+.upload-file1 {
   top: 19px;
   left: 75px;
   font-size: var(--font-size-13xl);
@@ -90,12 +87,12 @@ input[type="file"] {
   width: 182px;
   height: 46px;
 }
-.frame1,
-.or,
-.upload-file {
+.frame13,
+.or2,
+.upload-file1 {
   position: absolute;
 }
-.frame1 {
+.frame13 {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -106,15 +103,15 @@ input[type="file"] {
   height: 85px;
   overflow: hidden;
 }
-.or {
+.or2 {
   top: 0;
   left: 149px;
   display: inline-block;
   width: 31px;
   height: 26px;
 }
-.frame-child1,
-.rectangle-div {
+.frame-child18,
+.frame-child19 {
   position: absolute;
   top: 12px;
   left: 0;
@@ -122,11 +119,11 @@ input[type="file"] {
   width: 138px;
   height: 1px;
 }
-.frame-child1 {
+.frame-child19 {
   top: 13px;
   left: 191px;
 }
-.frame2 {
+.frame14 {
   position: absolute;
   top: 352px;
   left: 476px;
@@ -144,17 +141,6 @@ input[type="file"] {
   border-radius: var(--br-3xs);
   width: 524px;
   height: 191px;
-  font-family: Poppins;
-  font-size: 15px;
-}
-.rectangle-textarea::placeholder {
-  padding: 3px;
-    color: #C3C3C3;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
 }
 .input-data {
   position: absolute;
@@ -164,7 +150,7 @@ input[type="file"] {
   width: 231px;
   height: 22px;
 }
-.frame3 {
+.frame15 {
   position: absolute;
   top: 387px;
   left: 378px;
@@ -174,7 +160,7 @@ input[type="file"] {
   font-size: var(--font-size-mini);
   color: var(--color-silver);
 }
-.frame-child2 {
+.frame-child20 {
   position: absolute;
   top: 0;
   left: 0;
@@ -195,13 +181,13 @@ input[type="file"] {
   width: 79px;
   height: 35px;
 }
-.frame-child3,
-.frame4 {
+.frame-child21,
+.frame16 {
   position: absolute;
   width: 205px;
   height: 62px;
 }
-.frame4 {
+.frame16 {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -210,7 +196,7 @@ input[type="file"] {
   left: 538px;
   overflow: hidden;
 }
-.frame-child3 {
+.frame-child21 {
   top: 0;
   left: 0;
   border-radius: var(--br-3xs);
@@ -229,7 +215,7 @@ input[type="file"] {
   width: 162px;
   height: 35px;
 }
-.frame5 {
+.frame17 {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -243,7 +229,6 @@ input[type="file"] {
 }
 .macbook-air-1 {
   position: relative;
-  border-radius: var(--br-xl);
   background: linear-gradient(180deg, #9181f4, #5038ed);
   width: 100%;
   height: 832px;

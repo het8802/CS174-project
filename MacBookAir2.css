@@ -16,7 +16,7 @@
   width: 131px;
   height: 22px;
 }
-.frame-child9 {
+.frame-child8 {
   position: absolute;
   top: calc(50% - 37px);
   left: calc(50% - 601.5px);
@@ -26,7 +26,7 @@
   width: 522px;
   height: 88px;
 }
-.k-means-clustering2 {
+.k-means-clustering1 {
   position: absolute;
   top: 22px;
   left: 13px;
@@ -34,7 +34,7 @@
   width: 1136px;
   height: 80px;
 }
-.frame11 {
+.frame6 {
   position: absolute;
   top: 36px;
   left: 41px;
@@ -43,7 +43,7 @@
   overflow: hidden;
   font-size: var(--font-size-29xl);
 }
-.frame-child10 {
+.frame-child9 {
   position: absolute;
   top: 0;
   left: -6px;
@@ -52,7 +52,7 @@
   width: 205px;
   height: 62px;
 }
-.logout2 {
+.logout1 {
   position: absolute;
   top: 14px;
   left: 53px;
@@ -64,7 +64,7 @@
   width: 95px;
   height: 35px;
 }
-.rectangle-container {
+.rectangle-group {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -74,15 +74,15 @@
   left: 1045px;
   width: 199px;
   height: 62px;
+  overflow: hidden;
 }
-.frame-child11,
-.frame12 {
+.frame-child10,
+.frame7 {
   position: absolute;
   border-radius: var(--br-3xs);
   background-color: var(--color-whitesmoke);
-  padding-left: 10px;
 }
-.frame12 {
+.frame7 {
   border: 0;
   display: block;
   font-family: var(--font-poppins);
@@ -93,7 +93,7 @@
   height: 47px;
   overflow: hidden;
 }
-.frame-child11 {
+.frame-child10 {
   top: 0;
   left: 0;
   width: 205px;
@@ -110,12 +110,12 @@
   width: 66px;
   height: 31px;
 }
-.frame13,
-.or2,
+.frame8,
+.or1,
 .save {
   position: absolute;
 }
-.frame13 {
+.frame8 {
   border: 0;
   padding: 0;
   background-color: transparent;
@@ -123,17 +123,18 @@
   left: 537px;
   width: 205px;
   height: 62px;
+  overflow: hidden;
   cursor: pointer;
 }
-.or2 {
+.or1 {
   top: 0;
   left: 149px;
   display: inline-block;
   width: 31px;
   height: 26px;
 }
-.frame-child12,
-.frame-child13 {
+.frame-child11,
+.frame-child12 {
   position: absolute;
   top: 12px;
   left: 0;
@@ -141,11 +142,11 @@
   width: 138px;
   height: 1px;
 }
-.frame-child13 {
+.frame-child12 {
   top: 13px;
   left: 191px;
 }
-.frame14 {
+.frame9 {
   position: absolute;
   top: 526px;
   left: 476px;
@@ -166,8 +167,8 @@
   width: 103px;
   height: 31px;
 }
-.frame15,
-.frame16 {
+.frame10,
+.frame11 {
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -177,16 +178,17 @@
   left: 538px;
   width: 205px;
   height: 62px;
+  overflow: hidden;
 }
-.frame16 {
+.frame11 {
   top: 675px;
 }
 .macbook-air-2 {
   position: relative;
-  border-radius: var(--br-xl);
   background: linear-gradient(180deg, #9181f4, #5038ed);
   width: 100%;
   height: 832px;
+  overflow: hidden;
   text-align: left;
   font-size: var(--font-size-13xl);
   color: var(--color-white);

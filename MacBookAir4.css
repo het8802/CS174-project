@@ -7,7 +7,7 @@
   width: 239px;
   height: 49px;
 }
-.frame-child4 {
+.frame-child2 {
   position: absolute;
   top: calc(50% - 38px);
   left: calc(50% - 601.5px);
@@ -17,7 +17,7 @@
   width: 522px;
   height: 88px;
 }
-.k-means-clustering1 {
+.k-means-clustering {
   position: absolute;
   top: 22px;
   left: 15px;
@@ -25,7 +25,7 @@
   width: 1136px;
   height: 80px;
 }
-.frame6 {
+.frame1 {
   position: absolute;
   top: 36px;
   left: 39px;
@@ -34,7 +34,7 @@
   overflow: hidden;
   font-size: var(--font-size-29xl);
 }
-.frame-child5 {
+.frame-child3 {
   position: absolute;
   top: -2px;
   left: -4px;
@@ -43,7 +43,7 @@
   width: 205px;
   height: 62px;
 }
-.logout1 {
+.logout {
   position: absolute;
   top: 12px;
   left: 55px;
@@ -55,38 +55,73 @@
   width: 95px;
   height: 35px;
 }
-.rectangle-group {
+.rectangle-parent {
   cursor: pointer;
   border: 0;
   padding: 0;
   background-color: transparent;
+  position: absolute;
   top: 38px;
   left: 1041px;
   width: 201px;
   height: 55px;
   overflow: hidden;
 }
-.frame7,
-.or1,
-.rectangle-group {
+.frame-child4 {
+  position: absolute;
+  height: 104.94%;
+  width: 100.3%;
+  top: -4.94%;
+  right: 0;
+  bottom: 0;
+  left: -0.3%;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-whitesmoke);
+}
+.upload-file {
+  position: absolute;
+  top: 15px;
+  left: 74px;
+  font-size: var(--font-size-13xl);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: left;
+  width: 182px;
+  height: 46px;
+}
+.component-parent {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 4px;
+  left: 1px;
+  width: 330px;
+  height: 81px;
+  overflow: hidden;
+}
+.frame2,
+.or {
   position: absolute;
 }
-.frame7 {
+.frame2 {
   top: 325px;
   left: 464px;
   width: 331px;
   height: 85px;
   overflow: hidden;
 }
-.or1 {
+.or {
   top: 0;
   left: 149px;
   display: inline-block;
   width: 31px;
   height: 26px;
 }
-.frame-child6,
-.frame-child7 {
+.frame-child5,
+.frame-child6 {
   position: absolute;
   top: 12px;
   left: 0;
@@ -94,12 +129,12 @@
   width: 138px;
   height: 1px;
 }
-.frame-child7 {
+.frame-child6 {
   top: 13px;
   left: 191px;
 }
-.frame8,
-.frame9 {
+.frame3,
+.frame4 {
   position: absolute;
   top: 419px;
   left: 466px;
@@ -108,7 +143,7 @@
   overflow: hidden;
   font-size: var(--font-size-xl);
 }
-.frame9 {
+.frame4 {
   border: 0;
   background-color: transparent;
   display: block;
@@ -119,7 +154,7 @@
   width: 524px;
   height: 191px;
 }
-.frame-child8 {
+.frame-child7 {
   top: 0;
   left: 0;
   border-radius: var(--br-3xs);
@@ -127,8 +162,8 @@
   width: 205px;
   height: 62px;
 }
-.frame-child8,
-.frame10,
+.frame-child7,
+.frame5,
 .test {
   position: absolute;
 }
@@ -143,7 +178,7 @@
   width: 69px;
   height: 35px;
 }
-.frame10 {
+.frame5 {
   border: 0;
   padding: 0;
   background-color: transparent;
@@ -155,7 +190,6 @@
 }
 .macbook-air-4 {
   position: relative;
-  border-radius: var(--br-xl);
   background: linear-gradient(180deg, #9181f4, #5038ed);
   width: 100%;
   height: 832px;
@@ -165,36 +199,3 @@
   color: var(--color-white);
   font-family: var(--font-poppins);
 }
-
-.frame1 {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  top: 258px;
-  left: 474px;
-  width: 331px;
-  height: 85px;
-}
-
-/* .frame-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: var(--br-3xs);
-  background-color: var(--color-whitesmoke);
-  width: 331px;
-  height: 85px;
-}
-
-.upload-file {
-  top: 19px;
-  left: 75px;
-  font-size: var(--font-size-13xl);
-  display: inline-block;
-  font-family: var(--font-poppins);
-  color: var(--color-black);
-  text-align: left;
-  width: 182px;
-  height: 46px;
-} */
