@@ -22,9 +22,10 @@
         <b class="logout2">LOGOUT</b>
       </button>
       <b class="train-your-data">Train your data</b>
-      <button class="frame13">
+      <button class="frame13" id="uploadButton">
         <div class="frame-child17"></div>
         <b class="upload-file1">Upload File</b>
+        <input type="file" id="fileInput" style="display: none;" />
       </button>
       <div class="frame14">
         <b class="or2">OR</b>
@@ -32,9 +33,7 @@
         <div class="frame-child19"></div>
       </div>
       <div class="frame15">
-        <textarea class="rectangle-textarea" id="input-data-text-area">
-        </textarea>
-        <b class="input-data">Input data...</b>
+        <textarea class="rectangle-textarea" id="input-data-text-area" placeholder="Input data..."></textarea>
       </div>
       <button class="frame16" id="train-button">
         <div class="frame-child20"></div>
@@ -47,6 +46,16 @@
     </div>
 
     <script>
+      document.getElementById('uploadButton').addEventListener('click', function () {
+        document.getElementById('fileInput').click();
+      });
+
+      document.getElementById('fileInput').addEventListener('change', function () {
+          // Handle the selected file
+          var selectedFile = this.files[0];
+          console.log('Selected file:', selectedFile.name);
+      });
+
       var frameButton = document.getElementById("logout-button");
       if (frameButton) {
         frameButton.addEventListener("click", function (e) {

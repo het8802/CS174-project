@@ -13,11 +13,12 @@
   </head>
   <body>
     <div class="login">
-      <form class="login-parent" id="login-form">
+      <form method="post" class="login-parent" id="login-form" action="index.php">
         <b class="login1">Login</b>
         <input
           class="frame-child"
           id="password-text-field"
+          name="password"
           placeholder="Password"
           type="password"
         />
@@ -25,6 +26,7 @@
         <input
           class="frame-item"
           id="login-username-text"
+          name="username"
           placeholder="Username"
           type="text"
         />
@@ -32,11 +34,12 @@
         <input
           class="frame-inner"
           id="email-text-field"
+          name="email"
           placeholder="Email"
           type="email"
         />
 
-        <button class="login-now-wrapper" id="login-button" muted>
+        <button class="login-now-wrapper" id="login-button" type="submit" value="submit">
           <b class="login-now">Login Now</b>
         </button>
       </form>
@@ -51,18 +54,35 @@
           <p class="cluster-based">learning</p>
         </b>
       </div>
-      <a class="signup-instead" id="signup-option-link" href="./Signup.html"
+      <a class="signup-instead" id="signup-option-link" href="./Signup.php"
         >SignUp Instead?</a
       >
     </div>
 
     <script>
-      var frameButton = document.getElementById("login-button");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir1.html";
-        });
-      }
+      // var frameButton = document.getElementById("login-button");
+      // if (frameButton) {
+      //   frameButton.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir1.html";
+      //   });
+      // }
       </script>
   </body>
 </html>
+
+<?php
+
+
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+echo "going in";
+require_once "User.php";
+
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+if (validateLogin($username, $email, $password)){
+  echo "User detected";
+  header("Location: MacBookAir1.html");
+}
+?>

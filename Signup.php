@@ -13,16 +13,17 @@
   </head>
   <body>
     <div class="signup">
-      <form class="frame18" id="signup-form">
+      <form method="post" action="Signup.php" class="frame18" id="signup-form">
         <div class="sign-up-parent">
           <b class="sign-up">SIGN UP</b>
-          <button class="sign-up-wrapper" id="signup-button">
+          <button class="sign-up-wrapper" onclick="registerUser" id="signup-button" type="submit" value="submit">
             <b class="sign-up1">Sign Up</b>
           </button>
         </div>
         <input
           class="frame-input"
           id="password-text-field"
+          name="password"
           placeholder="Password"
           type="password"
         />
@@ -30,6 +31,7 @@
         <input
           class="frame-child22"
           id="conf-password-text-field"
+          name="conf-password"
           placeholder="Confirm Password"
           type="password"
         />
@@ -37,6 +39,7 @@
         <input
           class="frame-child23"
           id="username-text-field"
+          name="username"
           placeholder="Username"
           type="text"
         />
@@ -44,6 +47,7 @@
         <input
           class="frame-child24"
           id="email-text-field"
+          name="email"
           placeholder="Email"
           type="email"
         />
@@ -56,18 +60,57 @@
           <p class="cluster-based1">learning</p>
         </b>
       </div>
-      <a class="login-instead" id="login-option-link" href="./index.html"
+      <a class="login-instead" id="login-option-link" href="./index.php"
         >Login Instead?</a
       >
     </div>
 
     <script>
-      var frameButton = document.getElementById("signup-button");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir1.html";
-        });
+      // var frameButton = document.getElementById("signup-button");
+      // if (frameButton) {
+      //   frameButton.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir1.html";
+      //   });
+      // }
+
+      function collectData(){
+
+      }
+
+      function displayError(){
+
+      }
+
+      function registerUser(){
+        var password = document.getElementById('password-text-field').value;
+        var confPassword = document.getElementById('conf-password-text-field').value;
+        var username = document.getElementById('username-text-field').value;
+        var email = document.getElementById('email-text-field').value;
+
+        var userData = {
+          email: email,
+          username: username,
+          password: password,
+          confPassword: confPassword
+        };
+
+        createUser()
+
+        return userData;
       }
       </script>
   </body>
 </html>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once 'User.php';
+$username = $_POST['username'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$confPassword = $_POST['conf-password'];
+
+$user = createAccount($username, $email, $password);
+?>
