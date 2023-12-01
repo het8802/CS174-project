@@ -22,23 +22,26 @@
         <b class="logout2">LOGOUT</b>
       </button>
       <b class="train-your-data">Train your data</b>
-      <button class="frame13" id="uploadButton">
-        <div class="frame-child17"></div>
-        <b class="upload-file1">Upload File</b>
-        <input type="file" id="fileInput" style="display: none;" />
-      </button>
-      <div class="frame14">
-        <b class="or2">OR</b>
-        <div class="frame-child18"></div>
-        <div class="frame-child19"></div>
-      </div>
-      <div class="frame15">
-        <textarea class="rectangle-textarea" id="input-data-text-area" placeholder="Input data..."></textarea>
-      </div>
-      <button class="frame16" id="train-button">
-        <div class="frame-child20"></div>
-        <b class="train">TRAIN</b>
-      </button>
+
+      <form method="post" action="MacBookAir1.php" enctype="multipart/form-data">
+        <button class="frame13" id="uploadButton">
+          <div class="frame-child17"></div>
+          <b class="upload-file1">Upload File</b>
+        </button>
+        <input type="file" id="fileInput" style="display: none;" name="file-upload"/>
+        <div class="frame14">
+          <b class="or2">OR</b>
+          <div class="frame-child18"></div>
+          <div class="frame-child19"></div>
+        </div>
+        <div class="frame15">
+          <textarea class="rectangle-textarea" id="input-data-text-area" placeholder="Input data..." name="input-data-text-area"></textarea>
+        </div>
+        <button class="frame16" id="train-button" type="submit" name="submit">
+          <div class="frame-child20"></div>
+          <b class="train">TRAIN</b>
+        </button>
+      </form>
       <button class="frame17" id="your-models-button">
         <div class="frame-child21"></div>
         <b class="your-models">YOUR MODELS</b>
@@ -50,7 +53,7 @@
         document.getElementById('fileInput').click();
       });
 
-      document.getElementById('fileInput').addEventListener('change', function () {
+      document.getElementById('fileInput').addEventListener('click', function () {
           // Handle the selected file
           var selectedFile = this.files[0];
           console.log('Selected file:', selectedFile.name);
@@ -79,3 +82,24 @@
       </script>
   </body>
 </html>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+$file = $_FILES['file-upload']['tmp_name'];
+                    
+require_once "Model.php";
+
+if (isset($_POST['submit'])) {
+  echo "submit button pressed";
+}
+$text = $_POST['input-data-text-area'];
+
+if ($text) {
+  var_dump($_POST); 
+  processText($text);
+}
+else {
+  processFile($file);
+}
+?>

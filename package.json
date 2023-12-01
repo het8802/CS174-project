@@ -10,5 +10,10 @@
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "json": "^11.0.0",
+    "scikit-learn": "^0.1.0",
+    "sys": "^0.0.1"
   }
 }

@@ -6,12 +6,14 @@ $conn = connectDatabase();
 
 
 function trainModel($data) {
+    print_r($data);
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to train the model
-    $result = shell_exec('python train_model.py ' . escapeshellarg(json_encode($data)));
-    echo "result: ". $result;
+    $command = '/opt/homebrew/bin/python3 ./train_model.py ' . escapeshellarg(json_encode($data)) . ' 2>&1';
+    $result = shell_exec($command);
+    print_r($result);
     $trainedModel = json_decode($result, true);
-    echo $trainedModel;
+    print_r($trainedModel);
     // $saveTrainingDataInModels($data);
 }
 
@@ -76,7 +78,7 @@ function processText($string) {
         // Add the row to the 2D array
         $twoDArray[] = $row;
     }
-    testModel($twoDArray);
+    trainModel($twoDArray);
 }
 
 ?>

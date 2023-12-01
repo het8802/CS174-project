@@ -83,6 +83,5 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 if (validateLogin($username, $email, $password)){
   echo "User detected";
-  header("Location: MacBookAir1.html");
 }
 ?>
