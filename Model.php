@@ -3,7 +3,7 @@ require_once "DatabaseConfig.php";
 require_once "Database.php";
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-// private $trainedModel;
+
 $conn = connectDatabase();
 
 
@@ -21,6 +21,7 @@ function trainModel($data) {
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             echo "JSON decoding error: " . json_last_error_msg();
+            return;
         } else {
             echo "<br>trained model: ";
             print_r($trainedModel);
@@ -34,14 +35,37 @@ function trainModel($data) {
     header("Location: MacBookAir2.php");
 }
 
-function testModel($file) {
+function testModel($data, $model) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to test the model
     echo "<br>test model reached";
-    // $command = escapeshellcmd("python3 train_model.py");
-    $result = shell_exec("python3 test_model.py"). escapeshellarg(json_encode($data));
+
+    $command = "/opt/homebrew/bin/python3 ./test_model.py " . escapeshellarg(json_encode($data)) . " " . escapeshellarg(json_encode($model));
+
+    $result = shell_exec($command);
+
+    // Separate JSON from warnings/errors
+    if (preg_match('/\{.*\}/', $result, $matches)) {
+        $jsonResult = $matches[0];
+        print_r($jsonResult);
+        $testResults = json_decode($jsonResult, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            echo "JSON decoding error: " . json_last_error_msg();
+            return;
+        } else {
+            echo "<br>tested data: ";
+            print_r($testResults);
+        }
+    } else {
+        echo "No JSON found in the output<br>";
+        print_r($result);
+    }
+
+    // print_r($testResults);
+
     // return json_decode($result, true);
-    echo $result;
+    // echo $result;
 }
 
 function saveTrainingDataInModels($data, $username, $modelName) {
@@ -102,7 +126,7 @@ function processText($string) {
         // Add the row to the 2D array
         $twoDArray[] = $row;
     }
-    trainModel($twoDArray);
+    return $twoDArray;
 }
 
 ?>

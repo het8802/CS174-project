@@ -19,12 +19,12 @@
         <div class="frame-child8"></div>
         <b class="k-means-clustering1">K-Means Clustering</b>
       </div>
-      <button class="rectangle-group" id="logout-button">
-        <div class="frame-child9"></div>
-        <b class="logout1">LOGOUT</b>
-      </button>
-
+      
       <form method="post" action="MacBookAir2.php">
+        <button class="rectangle-group" id="logout-button" name="logout-button" type="submit">
+          <div class="frame-child9"></div>
+          <b class="logout1">LOGOUT</b>
+        </button>
         <input
           class="frame7"
           id="model-name-text-field"
@@ -95,10 +95,18 @@ require_once 'Model.php';
 session_start();
 checkLogin();
 
+if (isset($_POST['logout-button'])) {
+  logout();
+}
+
 $modelName = $_POST['model-name'];
 
 if ($modelName) {
   print_r($_SESSION['model-data']);
-  saveTrainingDataInModels($_SESSION['model-data'], $_SESSION['user'], $modelName);
+  
+  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
+  echo "<br>";
+  print_r($model);
+  saveTrainingDataInModels(json_encode($model), $_SESSION['user'], $modelName);
 }
 ?>

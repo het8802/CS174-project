@@ -18,4 +18,4 @@ kmeans.fit(centroids)   #fitting the model on centroids
 predictions = kmeans.predict(data)
 
 # Output the predictions
-print(json.dumps(predictions.tolist()))
+print(json.dumps({'predictions': predictions.tolist()}))

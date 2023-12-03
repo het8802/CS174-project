@@ -18,27 +18,29 @@
         <div class="frame-child2"></div>
         <b class="k-means-clustering">K-Means Clustering</b>
       </div>
-      <button class="rectangle-parent" id="logout-button">
-        <div class="frame-child3"></div>
-        <b class="logout">LOGOUT</b>
-      </button>
-      <div class="frame2">
-        <button class="component-parent" id="uploadButton">
-          <div class="frame-child4"></div>
-          <b class="upload-file">Upload File</b>
-        <input type="file" id="fileInput" style="display: none;" />
+      <form method="post" enctype="multipart/form-data" action="MacBookAir4.php">
+        <button class="rectangle-parent" id="logout-button" name="logout-button" type="submit">
+          <div class="frame-child3"></div>
+          <b class="logout">LOGOUT</b>
         </button>
-      </div>
-      <div class="frame3">
-        <b class="or">OR</b>
-        <div class="frame-child5"></div>
-        <div class="frame-child6"></div>
-      </div>
-      <textarea class="frame4" placeholder="Input data..."></textarea>
-      <button class="frame5" disabled="{true}" id="test-button">
-        <div class="frame-child7"></div>
-        <b class="test">TEST</b>
-      </button>
+        <div class="frame2">
+          <button class="component-parent" id="uploadButton">
+            <div class="frame-child4"></div>
+            <b class="upload-file">Upload File</b>
+          <input type="file" id="fileInput" style="display: none;" name='file-upload'/>
+          </button>
+        </div>
+        <div class="frame3">
+          <b class="or">OR</b>
+          <div class="frame-child5"></div>
+          <div class="frame-child6"></div>
+        </div>
+        <textarea class="frame4" placeholder="Input data..." name='input-data-text-area'></textarea>
+        <button class="frame5" id="test-button" type="submit" name='submit-button'>
+          <div class="frame-child7"></div>
+          <b class="test">TEST</b>
+        </button>
+      </form>
     </div>
 
     <script>
@@ -61,3 +63,35 @@
       </script>
   </body>
 </html>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_error', 1);
+
+require_once 'User.php';
+require_once 'Model.php';
+
+session_start();
+checkLogin();
+
+if (isset($_POST['logout-button'])) {
+  logout();
+}
+
+$file = $_FILES['file-upload']['tmp_name'];
+
+$text = $_POST['input-data-text-area'];
+
+$twoDArray;
+if ($text) {
+  $twoDArray = processText($text);
+}
+
+else {
+  echo "file content: ". file_get_contents($file);
+}
+echo "<br>". $_SESSION['model-data'];
+$model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
+
+testModel($twoDArray, $model);
+?>

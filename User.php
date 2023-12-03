@@ -49,6 +49,11 @@ function checkLogin() {
     }
 }
 
+function logout() {
+    session_destroy();
+    header("Location: index.php");
+}
+
 function startSession($username) {
     session_start();
     $_SESSION['user'] = $username;

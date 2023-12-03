@@ -17,13 +17,13 @@
         <div class="frame-child15"></div>
         <b class="k-means-clustering2">K-Means Clustering</b>
       </div>
-      <button class="rectangle-container" id="logout-button">
-        <div class="frame-child16"></div>
-        <b class="logout2">LOGOUT</b>
-      </button>
-      <b class="train-your-data">Train your data</b>
-
       <form method="post" action="MacBookAir1.php" enctype="multipart/form-data">
+        <button class="rectangle-container" id="logout-button" type="submit" name="logout-button">
+          <div class="frame-child16"></div>
+          <b class="logout2">LOGOUT</b>
+        </button>
+        <b class="train-your-data">Train your data</b>
+
         <button class="frame13" id="uploadButton">
           <div class="frame-child17"></div>
           <b class="upload-file1">Upload File</b>
@@ -90,14 +90,21 @@ require_once "User.php";
 require_once "Model.php";
 session_start();
 checkLogin();
+
+if (isset($_POST['logout-button'])) {
+  logout();
+}
 $file = $_FILES['file-upload']['tmp_name'];         
 
 $text = $_POST['input-data-text-area'];
 
+$twoDArray;
 if ($text) {
-  processText($text);
+  $twoDArray = processText($text);
 }
 else {
-  processFile($file);
+  $twoDArray = processFile($file);
 }
+trainModel($twoDArray);
+
 ?>
