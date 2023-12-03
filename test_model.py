@@ -1,14 +1,21 @@
 import sys
 import json
+import numpy as np
 from sklearn.cluster import KMeans
 
-# Assuming the incoming data is a JSON array of arrays
+# Load test data and centroids
 data = json.loads(sys.argv[1])
+centroids = json.loads(sys.argv[2])  # centroids passed as a second argument
 
-# Here we should load the model and then predict, but for the sake of example,
-# we will just instantiate a new model
-kmeans = KMeans(n_clusters=3)  # Number of clusters is hard-coded for the example
-predictions = kmeans.fit_predict(data)
+# Convert centroids to numpy array
+# centroids = np.array(centroids)
+
+# Initialize KMeans with pre-trained centroids
+kmeans = KMeans(n_clusters=len(centroids), n_init=1)
+kmeans.fit(centroids)   #fitting the model on centroids
+
+# Predict the cluster for the data
+predictions = kmeans.predict(data)
 
 # Output the predictions
 print(json.dumps(predictions.tolist()))
