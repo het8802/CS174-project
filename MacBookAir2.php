@@ -23,17 +23,21 @@
         <div class="frame-child9"></div>
         <b class="logout1">LOGOUT</b>
       </button>
-      <input
-        class="frame7"
-        id="model-name-text-field"
-        placeholder="Name your model"
-        type="text"
-      />
 
-      <button class="frame8" disabled="{true}" id="save-button">
-        <div class="frame-child10"></div>
-        <b class="save">SAVE</b>
-      </button>
+      <form method="post" action="MacBookAir2.php">
+        <input
+          class="frame7"
+          id="model-name-text-field"
+          placeholder="Name your model"
+          type="text"
+          name="model-name"
+        />
+
+        <button class="frame8" id="save-button" type="submit" value="submit">
+          <div class="frame-child10"></div>
+          <b class="save">SAVE</b>
+        </button>
+      </form>
       <div class="frame9">
         <b class="or1">OR</b>
         <div class="frame-child11"></div>
@@ -50,33 +54,51 @@
     </div>
 
     <script>
-      var frameButton = document.getElementById("logout-button");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "./Login.html";
-        });
-      }
+      // var frameButton = document.getElementById("logout-button");
+      // if (frameButton) {
+      //   frameButton.addEventListener("click", function (e) {
+      //     window.location.href = "./Login.html";
+      //   });
+      // }
       
-      var frame1 = document.getElementById("save-button");
-      if (frame1) {
-        frame1.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir4.html";
-        });
-      }
+      // var frame1 = document.getElementById("save-button");
+      // if (frame1) {
+      //   frame1.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir4.php";
+      //   });
+      // }
       
-      var frame2 = document.getElementById("frame2");
-      if (frame2) {
-        frame2.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir4.html";
-        });
-      }
+      // var frame2 = document.getElementById("frame2");
+      // if (frame2) {
+      //   frame2.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir4.php";
+      //   });
+      // }
       
-      var frame3 = document.getElementById("frame3");
-      if (frame3) {
-        frame3.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir4.html";
-        });
-      }
+      // var frame3 = document.getElementById("frame3");
+      // if (frame3) {
+      //   frame3.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir4.php";
+      //   });
+      // }
       </script>
   </body>
 </html>
+
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
+require_once 'User.php';
+require_once 'Model.php';
+session_start();
+checkLogin();
+
+$modelName = $_POST['model-name'];
+
+if ($modelName) {
+  print_r($_SESSION['model-data']);
+  saveTrainingDataInModels($_SESSION['model-data'], $_SESSION['user'], $modelName);
+}
+?>

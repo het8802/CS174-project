@@ -53,32 +53,32 @@
         document.getElementById('fileInput').click();
       });
 
-      document.getElementById('fileInput').addEventListener('click', function () {
-          // Handle the selected file
-          var selectedFile = this.files[0];
-          console.log('Selected file:', selectedFile.name);
-      });
+      // document.getElementById('fileInput').addEventListener('click', function () {
+      //     // Handle the selected file
+      //     var selectedFile = this.files[0];
+      //     console.log('Selected file:', selectedFile.name);
+      // });
 
-      var frameButton = document.getElementById("logout-button");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "./Login.html";
-        });
-      }
+      // var frameButton = document.getElementById("logout-button");
+      // if (frameButton) {
+      //   frameButton.addEventListener("click", function (e) {
+      //     window.location.href = "./Login.html";
+      //   });
+      // }
       
-      var frame1 = document.getElementById("train-button");
-      if (frame1) {
-        frame1.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir2.html";
-        });
-      }
+      // var frame1 = document.getElementById("train-button");
+      // if (frame1) {
+      //   frame1.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir2.html";
+      //   });
+      // }
       
-      var frame2 = document.getElementById("your-models-button");
-      if (frame2) {
-        frame2.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir3.html";
-        });
-      }
+      // var frame2 = document.getElementById("your-models-button");
+      // if (frame2) {
+      //   frame2.addEventListener("click", function (e) {
+      //     window.location.href = "./MacBookAir3.html";
+      //   });
+      // }
       </script>
   </body>
 </html>
@@ -86,17 +86,15 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-$file = $_FILES['file-upload']['tmp_name'];
-                    
+require_once "User.php";
 require_once "Model.php";
+session_start();
+checkLogin();
+$file = $_FILES['file-upload']['tmp_name'];         
 
-if (isset($_POST['submit'])) {
-  echo "submit button pressed";
-}
 $text = $_POST['input-data-text-area'];
 
 if ($text) {
-  var_dump($_POST); 
   processText($text);
 }
 else {

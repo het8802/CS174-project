@@ -43,18 +43,19 @@ function validateLogin($username, $email, $password) {
     }
 }
 
-function startSession($username) {
-    session_start();
-    header("Location: MacBookAir1.php");
-    $_SESSION['user'] = $username;
+function checkLogin() {
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php");
+    }
 }
 
-function saveTrainingDataInUsers($data) {
-    // This method would likely be more complex, involving file handling
-    // For simplicity, we're assuming $data is a string
-    $stmt = $this->conn->prepare("UPDATE USERS SET trainingData = ? WHERE username = ?");
-    $stmt->execute([$data, $this->username]);
+function startSession($username) {
+    session_start();
+    $_SESSION['user'] = $username;
+    echo $_SESSION['user'];
+    header("Location: MacBookAir1.php");
 }
+
 
 function handleError($error) {
     // Handle errors (logging, displaying error messages, etc.)

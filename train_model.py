@@ -11,4 +11,3 @@ kmeans.fit(data)
 
 # Output the trained model parameters
 print(json.dumps({'centroids': kmeans.cluster_centers_.tolist()}))
-print("Python reached")

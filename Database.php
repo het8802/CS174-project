@@ -30,6 +30,11 @@ function executeQuery($query, $params = [], $paramTypes = "") {
         $stmt->bind_param($paramTypes, ...$params);
     }
     $stmt->execute($params);
+
+    if (preg_match('/^\s*(INSERT)\s/i', $query)) {
+        // It's a query that shouldn't return a result set
+        return;
+    }
     
     //Get the result
     $result = $stmt->get_result();
