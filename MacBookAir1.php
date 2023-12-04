@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
     $twoDArray = processFile($file);
     print_r($twoDArray);
   }
-  else if(isset($_POST['submit'])){
+  else {
     handleError("Enter data by either selecting a file or entering text manually");
   }
   

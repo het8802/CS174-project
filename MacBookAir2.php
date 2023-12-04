@@ -15,7 +15,7 @@ if (isset($_POST['model-button'])) {
   $modelName = $_POST['model-name'];
   $modelData = fetchModel($_SESSION['user'], $modelName);
 
-  $SESSION['model-data'] = $modelData;
+  $_SESSION['model-data'] = $modelData;
   header("Location: MacBookAir4.php");
   exit();
 }
