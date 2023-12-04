@@ -1,3 +1,41 @@
+<?php
+require_once 'User.php';
+require_once 'Model.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+session_start();
+checkLogin();
+
+if (isset($_POST['logout-button'])) {
+  logout();
+}
+
+if (isset($_POST['model-button'])) {
+  $modelName = $_POST['model-name'];
+  $modelData = fetchModel($_SESSION['user'], $modelName);
+
+  $SESSION['model-data'] = $modelData;
+  header("Location: MacBookAir4.php");
+  exit();
+}
+
+if (isset($_POST['submit'])) {
+  $modelName = $_POST['model-name'];
+
+  if (!$modelName) {
+    handleError("Please enter a model name to continue!");
+  }
+  
+  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
+  echo "<br>";
+  handleError($model);
+  if (saveTrainingDataInModels(json_encode($model), $_SESSION['user'], $modelName)) {
+    header("Location: MacBookAir4.php");
+    exit();
+  } 
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,80 +71,47 @@
           name="model-name"
         />
 
-        <button class="frame8" id="save-button" type="submit" value="submit">
+        <button class="frame8" id="save-button" type="submit" name="submit">
           <div class="frame-child10"></div>
           <b class="save">SAVE</b>
         </button>
+        <div class="frame9">
+          <b class="or1">OR</b>
+          <div class="frame-child11"></div>
+          <div class="frame-child12"></div>
+        </div>
       </form>
-      <div class="frame9">
-        <b class="or1">OR</b>
-        <div class="frame-child11"></div>
-        <div class="frame-child12"></div>
-      </div>
-      <button class="frame10" id="frame2">
-        <div class="frame-child10"></div>
-        <b class="model-1">Model 1</b>
-      </button>
-      <button class="frame11" id="frame3">
-        <div class="frame-child10"></div>
-        <b class="model-1">Model 2</b>
-      </button>
-    </div>
 
-    <script>
-      // var frameButton = document.getElementById("logout-button");
-      // if (frameButton) {
-      //   frameButton.addEventListener("click", function (e) {
-      //     window.location.href = "./Login.html";
-      //   });
-      // }
-      
-      // var frame1 = document.getElementById("save-button");
-      // if (frame1) {
-      //   frame1.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir4.php";
-      //   });
-      // }
-      
-      // var frame2 = document.getElementById("frame2");
-      // if (frame2) {
-      //   frame2.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir4.php";
-      //   });
-      // }
-      
-      // var frame3 = document.getElementById("frame3");
-      // if (frame3) {
-      //   frame3.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir4.php";
-      //   });
-      // }
-      </script>
+      <?php
+        $models = fetchModels($_SESSION['user']);
+        $top = 591; // adjusting the top of each button
+
+        foreach ($models as $model) {
+
+            echo '<form method="post" action="MacBookAir2.php">';
+            echo '  <input type="hidden" name="model-name" value="' . $model['model_name'] . '">';
+            echo '  <button class="frame10" style="top: ' . $top . 'px" type="submit" name="model-button">';
+            echo '    <div class="frame-child10"></div>';
+            echo '    <b class="model-1">' . $model['model_name'] . '</b>';
+            echo '  </button>';
+            echo '</form>';
+
+            $top += 86;
+        }
+      ?>
+
+    </div>
   </body>
+
+  <script>
+    // Calculate the total content height
+    const totalContentHeight = document.documentElement.scrollHeight;
+
+    // Set an element's height using viewport units to match the content height
+    const element = document.getElementByClassName('macbook-air-2');
+    element.style.height = `${totalContentHeight}px`;
+
+  </script>
 </html>
 
 
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors',1);
-
-require_once 'User.php';
-require_once 'Model.php';
-session_start();
-checkLogin();
-
-if (isset($_POST['logout-button'])) {
-  logout();
-}
-
-$modelName = $_POST['model-name'];
-
-if ($modelName) {
-  print_r($_SESSION['model-data']);
-  
-  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
-  echo "<br>";
-  print_r($model);
-  saveTrainingDataInModels(json_encode($model), $_SESSION['user'], $modelName);
-}
-?>

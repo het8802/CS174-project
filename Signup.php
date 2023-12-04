@@ -16,7 +16,7 @@
       <form method="post" action="Signup.php" class="frame18" id="signup-form">
         <div class="sign-up-parent">
           <b class="sign-up">SIGN UP</b>
-          <button class="sign-up-wrapper" onclick="registerUser" id="signup-button" type="submit" value="submit">
+          <button class="sign-up-wrapper" id="signup-button" type="submit" name="submit">
             <b class="sign-up1">Sign Up</b>
           </button>
         </div>
@@ -65,40 +65,7 @@
       >
     </div>
 
-    <script>
-      // var frameButton = document.getElementById("signup-button");
-      // if (frameButton) {
-      //   frameButton.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir1.html";
-      //   });
-      // }
-
-      function collectData(){
-
-      }
-
-      function displayError(){
-
-      }
-
-      function registerUser(){
-        var password = document.getElementById('password-text-field').value;
-        var confPassword = document.getElementById('conf-password-text-field').value;
-        var username = document.getElementById('username-text-field').value;
-        var email = document.getElementById('email-text-field').value;
-
-        var userData = {
-          email: email,
-          username: username,
-          password: password,
-          confPassword: confPassword
-        };
-
-        createUser()
-
-        return userData;
-      }
-      </script>
+    
   </body>
 </html>
 
@@ -112,5 +79,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $confPassword = $_POST['conf-password'];
 
-$user = createAccount($username, $email, $password);
+if (isset($_POST['submit']) && validateCredentials($username, $email, $password, $confPassword)) {
+  $user = createAccount($username, $email, $password);
+}
 ?>

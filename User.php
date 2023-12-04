@@ -15,6 +15,30 @@ function createAccount($username, $email, $password) {
     $salt = uniqid(); // Generate a unique salt
     $hashedPassword = hashPassword($password, $salt);
 
+    //check if user already exists
+    $user = executeQuery(
+        "SELECT * FROM USERS WHERE username = ? AND email = ?", 
+        [$username, $email],
+        "ss"
+    );
+
+    if ($user) {
+        handleError("User already exists!");
+        die();
+    }
+
+    //check if the username already exists
+    $oldUsername = executeQuery(
+        "SELECT * FROM USERS WHERE username = ?",
+        [$username],
+        "s"
+    );
+
+    if ($oldUsername) {
+        handleError("Username already exists! Please choose a different username.");
+        die();
+    }
+
     // Insert the new user into the database
     executeQuery(
         "INSERT INTO USERS (username, email, password, salt) VALUES (?, ?, ?, ?)", 
@@ -57,18 +81,24 @@ function logout() {
 function startSession($username) {
     session_start();
     $_SESSION['user'] = $username;
-    echo $_SESSION['user'];
     header("Location: MacBookAir1.php");
 }
 
 
 function handleError($error) {
     // Handle errors (logging, displaying error messages, etc.)
-    // This is a placeholder; in production, you'd want to do more than just die.
-    die($error);
+    if (is_string($error)){
+        echo '<script>alert("'.$error.'");</script>';
+        die();
+    }
 }
 
 function hashPassword($password, $salt) {
     return hash('sha256', $password . $salt);
+}
+
+//Function to validate the credentials entered by the user to signup
+function validateCredentials($username, $email, $password, $confPassword) {
+    return True;
 }
 ?>

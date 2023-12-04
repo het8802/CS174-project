@@ -36,3 +36,8 @@ body {
   --br-3xs: 10px;
   --br-xl: 20px;
 }
+
+body, html {
+  background: linear-gradient(180deg, #9181f4, #5038ed);
+  background-attachment: fixed;
+}

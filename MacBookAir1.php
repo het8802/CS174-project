@@ -24,11 +24,11 @@
         </button>
         <b class="train-your-data">Train your data</b>
 
-        <button class="frame13" id="uploadButton">
+        <label class="frame13" id="uploadButton">
           <div class="frame-child17"></div>
           <b class="upload-file1">Upload File</b>
-        </button>
-        <input type="file" id="fileInput" style="display: none;" name="file-upload"/>
+          <input type="file" accept=".txt, .text/plain" id="fileInput" style="display: none;" name="file-upload"/>
+        </label>
         <div class="frame14">
           <b class="or2">OR</b>
           <div class="frame-child18"></div>
@@ -41,45 +41,12 @@
           <div class="frame-child20"></div>
           <b class="train">TRAIN</b>
         </button>
+        <button class="frame17" id="your-models-button" type="submit" name="your-models">
+          <div class="frame-child21"></div>
+          <b class="your-models">YOUR MODELS</b>
+        </button>
       </form>
-      <button class="frame17" id="your-models-button">
-        <div class="frame-child21"></div>
-        <b class="your-models">YOUR MODELS</b>
-      </button>
     </div>
-
-    <script>
-      document.getElementById('uploadButton').addEventListener('click', function () {
-        document.getElementById('fileInput').click();
-      });
-
-      // document.getElementById('fileInput').addEventListener('click', function () {
-      //     // Handle the selected file
-      //     var selectedFile = this.files[0];
-      //     console.log('Selected file:', selectedFile.name);
-      // });
-
-      // var frameButton = document.getElementById("logout-button");
-      // if (frameButton) {
-      //   frameButton.addEventListener("click", function (e) {
-      //     window.location.href = "./Login.html";
-      //   });
-      // }
-      
-      // var frame1 = document.getElementById("train-button");
-      // if (frame1) {
-      //   frame1.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir2.html";
-      //   });
-      // }
-      
-      // var frame2 = document.getElementById("your-models-button");
-      // if (frame2) {
-      //   frame2.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir3.html";
-      //   });
-      // }
-      </script>
   </body>
 </html>
 
@@ -94,17 +61,37 @@ checkLogin();
 if (isset($_POST['logout-button'])) {
   logout();
 }
-$file = $_FILES['file-upload']['tmp_name'];         
 
-$text = $_POST['input-data-text-area'];
-
-$twoDArray;
-if ($text) {
-  $twoDArray = processText($text);
+if (isset($_POST['your-models'])) {
+  header("Location: MacBookAir3.php");
 }
-else {
-  $twoDArray = processFile($file);
-}
-trainModel($twoDArray);
 
+if (isset($_POST['submit'])) {
+  $file = $_FILES['file-upload']['tmp_name'];         
+  
+  $text = $_POST['input-data-text-area'];
+
+  if (!$file && !$text) {
+    handleError("Please enter data by either selecting a text file or entering text manually in the text area");
+  }
+  
+  $twoDArray;
+  if ($text) {
+    $twoDArray = processText($text);
+  }
+  else if($file) {
+    $twoDArray = processFile($file);
+    print_r($twoDArray);
+  }
+  else if(isset($_POST['submit'])){
+    handleError("Enter data by either selecting a file or entering text manually");
+  }
+  
+  if ($twoDArray){
+    trainModel($twoDArray);
+    print_r($_SESSION['model-data']);
+    header("Location: MacBookAir2.php");
+    exit();
+  }
+}
 ?>

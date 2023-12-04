@@ -6,7 +6,6 @@ require_once 'DatabaseConfig.php';
 $connection;
 
 function connectDatabase() {
-    echo "establishing connection...";
     global $hostname, $username_db, $password_db, $database, $connection;
     $connection = new mysqli($hostname, $username_db, $password_db, $database);
     if($connection->connect_error){

@@ -1,6 +1,7 @@
 <?php
 require_once "DatabaseConfig.php";
 require_once "Database.php";
+require_once "User.php";
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
@@ -10,7 +11,7 @@ $conn = connectDatabase();
 function trainModel($data) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to train the model
-    // print_r($data);
+
     $command = '/opt/homebrew/bin/python3 ./train_model.py ' . escapeshellarg(json_encode($data)) . ' 2>&1';
     $result = shell_exec($command);
 
@@ -24,15 +25,14 @@ function trainModel($data) {
             return;
         } else {
             echo "<br>trained model: ";
-            print_r($trainedModel);
         }
     } else {
         echo "No JSON found in the output";
+        print_r($result);
     }
 
     // Storing JSON string in session
     $_SESSION['model-data'] = $jsonResult;
-    header("Location: MacBookAir2.php");
 }
 
 function testModel($data, $model) {
@@ -55,17 +55,12 @@ function testModel($data, $model) {
             return;
         } else {
             echo "<br>tested data: ";
-            print_r($testResults);
+            handleError($testResults);
         }
     } else {
         echo "No JSON found in the output<br>";
-        print_r($result);
+        handleError($result);
     }
-
-    // print_r($testResults);
-
-    // return json_decode($result, true);
-    // echo $result;
 }
 
 function saveTrainingDataInModels($data, $username, $modelName) {
@@ -83,21 +78,17 @@ function saveTrainingDataInModels($data, $username, $modelName) {
             [$username, $data, $modelName],
             "sss"
         );
+        return True;
     }
-    header("Location: MacBookAir4.php");
-    exit();
+    else {
+        handleError("Model name already exists. Please choose a different name!");
+        return False;
+    }
 }
 
+// Process the file and convert it to a 2D array
 function processFile($file) {
-    // Process the file and convert it to a 2D array
-    // Placeholder for file processing
-    $ffile = fopen($file, 'r');
-
-    while(!feof($ffile)) {
-        $line = fgets($ffile);
-        echo $line."<br>";
-    }
-    fclose($ffile);
+    return processText(trim(file_get_contents($file)));
 }
 
 function processText($string) {
@@ -120,13 +111,35 @@ function processText($string) {
 
         // Convert each number to an integer and add it to the row
         foreach ($numbers as $number) {
-            $row[] = (int)$number;
+            if(is_numeric($number)){
+                $row[] = (int)$number;
+            } else{
+                handleError("Please enter numeric data!");
+            }
         }
 
         // Add the row to the 2D array
         $twoDArray[] = $row;
     }
     return $twoDArray;
+}
+
+function fetchModels($username) {
+    $models = executeQuery(
+        "SELECT model_name FROM MODELS WHERE username = ?",
+        [$username],
+        "s"
+    );
+    return $models;
+}
+
+function fetchModel($username, $modelName) {
+    $model = executeQuery(
+        "SELECT id, centroids FROM MODELS WHERE username = ? AND model_name = ?",
+        [$username, $modelName],
+        "ss"
+    );
+    return $model[0];   //executeQuery return one data point but in 2D format, we return 1D array
 }
 
 ?>

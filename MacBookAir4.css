@@ -184,6 +184,7 @@
   height: 35px;
 }
 .frame5 {
+  cursor: pointer ;
   border: 0;
   padding: 0;
   background-color: transparent;
@@ -194,9 +195,6 @@
 }
 .macbook-air-4 {
   position: relative;
-  background: linear-gradient(180deg, #9181f4, #5038ed);
-  width: 100%;
-  height: 832px;
   text-align: left;
   font-size: var(--font-size-13xl);
   color: var(--color-white);

@@ -39,7 +39,7 @@
           type="email"
         />
 
-        <button class="login-now-wrapper" id="login-button" type="submit" value="submit">
+        <button class="login-now-wrapper" id="login-button" type="submit" name="submit">
           <b class="login-now">Login Now</b>
         </button>
       </form>
@@ -75,13 +75,12 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors',1);
-echo "going in";
 require_once "User.php";
 
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-if (validateLogin($username, $email, $password)){
+if (isset($_POST['submit']) && validateLogin($username, $email, $password)){
   echo "User detected";
 }
 ?>

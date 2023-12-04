@@ -179,11 +179,21 @@
 }
 .macbook-air-2 {
   position: relative;
+  text-align: left;
+  width: 100vw;
+  min-height: 100vh; 
+  font-size: var(--font-size-13xl);
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
+
+.page-container {
+  position: relative;
   background: linear-gradient(180deg, #9181f4, #5038ed);
   width: 100%;
-  height: 832px;
-  text-align: left;
-  font-size: var(--font-size-13xl);
+  min-height: 100%; /* Make the container at least as tall as the viewport */
+  text-align: center;
+  font-size: var(--font-size-29xl);
   color: var(--color-white);
   font-family: var(--font-poppins);
 }

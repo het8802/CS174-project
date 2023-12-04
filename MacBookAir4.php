@@ -24,11 +24,11 @@
           <b class="logout">LOGOUT</b>
         </button>
         <div class="frame2">
-          <button class="component-parent" id="uploadButton">
+          <label class="component-parent" id="uploadButton">
             <div class="frame-child4"></div>
             <b class="upload-file">Upload File</b>
-          <input type="file" id="fileInput" style="display: none;" name='file-upload'/>
-          </button>
+            <input type="file" accept=".txt, .text/plain" id="fileInput" style="display: none;" name='file-upload'/>
+          </label>
         </div>
         <div class="frame3">
           <b class="or">OR</b>
@@ -36,31 +36,12 @@
           <div class="frame-child6"></div>
         </div>
         <textarea class="frame4" placeholder="Input data..." name='input-data-text-area'></textarea>
-        <button class="frame5" id="test-button" type="submit" name='submit-button'>
+        <button class="frame5" id="test-button" type="submit" name='submit'>
           <div class="frame-child7"></div>
           <b class="test">TEST</b>
         </button>
       </form>
     </div>
-
-    <script>
-      document.getElementById('uploadButton').addEventListener('click', function () {
-        document.getElementById('fileInput').click();
-      });
-
-      document.getElementById('fileInput').addEventListener('change', function () {
-          // Handle the selected file
-          var selectedFile = this.files[0];
-          console.log('Selected file:', selectedFile.name);
-      });
-
-      var frameButton = document.getElementById("logout-button");
-      if (frameButton) {
-        frameButton.addEventListener("click", function (e) {
-          window.location.href = "./Login.html";
-        });
-      }
-      </script>
   </body>
 </html>
 
@@ -78,20 +59,26 @@ if (isset($_POST['logout-button'])) {
   logout();
 }
 
-$file = $_FILES['file-upload']['tmp_name'];
+if (isset($_POST['submit'])) {
+  
+  $file = $_FILES['file-upload']['tmp_name'];
+  
+  $text = $_POST['input-data-text-area'];
 
-$text = $_POST['input-data-text-area'];
-
-$twoDArray;
-if ($text) {
-  $twoDArray = processText($text);
+  if (!$file && !$text) {
+    handleError("Please enter data either by uploading text file or entering data manually in the text area");
+  }
+  
+  $twoDArray;
+  if ($text) {
+    $twoDArray = processText($text);
+  }
+  
+  else {
+    $twoDArray = processFile($file);
+  }
+  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
+  
+  testModel($twoDArray, $model);
 }
-
-else {
-  echo "file content: ". file_get_contents($file);
-}
-echo "<br>". $_SESSION['model-data'];
-$model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
-
-testModel($twoDArray, $model);
 ?>
