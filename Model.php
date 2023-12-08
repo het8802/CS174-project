@@ -44,21 +44,16 @@ function testModel($data, $model) {
     $command = "/opt/homebrew/bin/python3 ./test_model.py " . escapeshellarg(json_encode($data)) . " " . escapeshellarg($model);
 
     $result = shell_exec($command);
-    print_r($result);
 
     // Separate JSON from warnings/errors
     if (preg_match('/\{.*\}/', $result, $matches)) {
         $jsonResult = $matches[0];
-        print_r($jsonResult);
         $testResults = json_decode($jsonResult, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             echo "JSON decoding error: " . json_last_error_msg();
             return;
-        } else {
-            echo "<br>tested data: ";
-            handleError($testResults);
-        }
+        } 
     } else {
         echo "No JSON found in the output<br>";
         handleError($result);

@@ -1,3 +1,15 @@
+<?php
+require_once "User.php";
+require_once "Model.php";
+session_start();
+checkLogin();
+
+if (isset($_POST['logout-button'])) {
+    logout();
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,31 +30,32 @@
           <div class="frame1">
             <b class="k-means-clustering">K-Means Clustering</b>
           </div>
-          <button class="logout-wrapper" id="logout-button">
-            <b class="logout">LOGOUT</b>
-          </button>
+          <form action="MacBookAir5.php" method="post">
+            <button class="logout-wrapper" type="submit" name="logout-button">
+                <b class="logout">LOGOUT</b>
+            </button>
+          </form>
         </div>
       </header>
       <div class="frame-group">
-        <div class="frame-div"></div>
-        <footer class="frame-wrapper">
-          <div class="frame-div">
-            <button class="frame-21" id="your-models-button">
-              <div class="frame-21-child"></div>
-              <b class="your-models">YOUR MODELS</b>
-            </button>
-          </div>
-        </footer>
+        <div class="frame-div">
+        
+        <?php
+        $testResults = $_SESSION['test-results'];
+
+        $testData = $_SESSION['test-data'];
+
+        $centroids = $_SESSION['model-data'];
+        $centroids = json_decode($centroids);
+        foreach (array_keys($testData) as $i) {
+            echo "<br>The data point ". json_encode($testData[$i]). 
+            " belongs to Cluster with centroid: ". 
+            json_encode($centroids[$testResults[$i]]);
+        }
+        ?>
+        </div>
       </div>
     </div>
 
-    <script>
-      var frame21 = document.getElementById("your-models-button");
-      if (frame21) {
-        frame21.addEventListener("click", function (e) {
-          window.location.href = "./MacBookAir3.html";
-        });
-      }
-      </script>
   </body>
 </html>

@@ -35,11 +35,18 @@ if (isset($_POST['submit'])) {
   else {
     $twoDArray = processFile($file);
   }
+  $_SESSION['test-data'] = $twoDArray;
   echo "model data: <br>";
-  print_r($_SESSION['model-data']);
   $testResults = testModel($twoDArray, $_SESSION['model-data']);
+  $_SESSION['test-results'] = $testResults['Clusters'];
   header("Location: MacBookAir5.php");
   exit();
+  print_r(array_combine($twoDArray, $testResults['Clusters']));
+  // print_r($twoDArray);
+  // echo "<br>";
+  // print_r($testResults['Clusters']);
+
+  
 }
 ?>
 

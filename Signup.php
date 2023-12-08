@@ -79,7 +79,10 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $confPassword = $_POST['conf-password'];
 
-if (isset($_POST['submit']) && validateCredentials($username, $email, $password, $confPassword)) {
+if (isset($_POST['submit']) && isValidUsername($username) &&isValidEmail($email) && isValidPassword($password) && validateConfirmPassword($password, $confPassword)){
   $user = createAccount($username, $email, $password);
+  header("Location: MacBookAir1.php");
+} else if (isset($_POST['submit'])) {
+  handleError("Enter proper credentials!");
 }
 ?>

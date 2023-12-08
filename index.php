@@ -59,14 +59,6 @@
       >
     </div>
 
-    <script>
-      // var frameButton = document.getElementById("login-button");
-      // if (frameButton) {
-      //   frameButton.addEventListener("click", function (e) {
-      //     window.location.href = "./MacBookAir1.html";
-      //   });
-      // }
-      </script>
   </body>
 </html>
 
@@ -80,7 +72,9 @@ require_once "User.php";
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
-if (isset($_POST['submit']) && validateLogin($username, $email, $password)){
-  echo "User detected";
+if (isset($_POST['submit']) && isValidUsername($username) &&isValidEmail($email) && isValidPassword($password) && validateLogin($username, $email, $password)){
+  header("Location: MacBookAir1.php");
+} else if (isset($_POST['submit'])) {
+  handleError("Enter proper credentials!");
 }
 ?>

@@ -61,6 +61,38 @@ function validateLogin($username, $email, $password) {
     }
 }
 
+function isValidUsername($username) {
+    return preg_match('/^[a-zA-Z0-9_-]+$/', $username);
+}
+
+function isValidEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+function isValidPassword($password) {
+    if (strlen($password) < 8) {
+        return false; // Length check
+    }
+
+    if (!preg_match('/[A-Z]/', $password)) {
+        return false; // At least one uppercase letter
+    }
+
+    if (!preg_match('/[a-z]/', $password)) {
+        return false; // At least one lowercase letter
+    }
+
+    if (!preg_match('/\d/', $password)) {
+        return false; // At least one digit
+    }
+
+    if (!preg_match('/\W/', $password)) {
+        return false; // At least one special character
+    }
+
+    return true;
+}
+
 function checkLogin() {
     if (!isset($_SESSION['user'])) {
         header("Location: index.php");
@@ -75,7 +107,6 @@ function logout() {
 function startSession($username) {
     session_start();
     $_SESSION['user'] = $username;
-    header("Location: MacBookAir1.php");
 }
 
 
@@ -91,7 +122,9 @@ function hashPassword($password, $salt) {
 }
 
 //Function to validate the credentials entered by the user to signup
-function validateCredentials($username, $email, $password, $confPassword) {
-    return True;
+function validateConfirmPassword($password, $confPassword) {
+    if ($password === $confPassword) {
+        return true;
+    }
 }
 ?>

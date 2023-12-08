@@ -99,9 +99,11 @@ if (isset($_POST['model-button'])) {
         <div class="your-models-wrapper">
           <b class="your-models1">Your Models</b>
         </div>
-        <button class="logout-container" id="logout-button">
-          <b class="logout1">LOGOUT</b>
-        </button>
+        <form action="MacBookAir3.php" method="post">
+          <button class="logout-container" type="submit" name="logout-button">
+            <b class="logout1">LOGOUT</b>
+          </button>
+        </form>
     </header>
       <div class="macbook-air-3-inner">
         <div class="frame-parent1">
@@ -111,18 +113,6 @@ if (isset($_POST['model-button'])) {
                 <b class="back"><?php echo htmlspecialchars($model['model_name']); ?></b>
             </button>
         <?php endforeach; ?>
-
-
-
-          <button class="frame1" id="your-models-button">
-            <b class="back">Model 1</b>
-          </button>
-          <button class="frame1" id="your-models-button">
-            <b class="back">Model 2</b>
-          </button>
-          <button class="frame1" id="your-models-button">
-            <b class="back">Model 5690</b>
-          </button>
         </div>
       </div>
       <div class="macbook-air-3-child">
