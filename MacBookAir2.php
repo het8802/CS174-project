@@ -27,10 +27,8 @@ if (isset($_POST['submit'])) {
     handleError("Please enter a model name to continue!");
   }
   
-  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
-  echo "<br>";
-  handleError($model);
-  if (saveTrainingDataInModels(json_encode($model), $_SESSION['user'], $modelName)) {
+  $model = $_SESSION['model-data'];
+  if (saveTrainingDataInModels($model, $_SESSION['user'], $modelName)) {
     header("Location: MacBookAir4.php");
     exit();
   } 
