@@ -1,4 +1,4 @@
-.frame-child26,
+/* .frame-child26,
 .your-models1 {
   position: absolute;
   width: 522px;
@@ -97,4 +97,144 @@
   font-size: var(--font-size-29xl);
   color: var(--color-white);
   font-family: var(--font-poppins);
+} */
+
+
+.your-models1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 522px;
+  height: 88px;
+  flex-shrink: 0;
+}
+.your-models-wrapper {
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-300);
+  backdrop-filter: blur(13.6px);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.logout1 {
+  position: relative;
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: left;
+}
+.logout-container {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-2xs) var(--padding-32xl);
+  background-color: var(--color-tomato);
+  border-radius: var(--br-3xs);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-group,
+.frame1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+}
+.frame-group {
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 40px;
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
+.frame1 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-smi) var(--padding-2xl);
+  background-color: var(--color-whitesmoke);
+  border-radius: var(--br-3xs);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+}
+.frame-parent1,
+.macbook-air-3-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.frame-parent1 {
+  overflow: hidden;
+  gap: 19px;
+}
+.macbook-air-3-inner {
+  align-self: stretch;
+  flex: 1;
+  padding: 1px;
+}
+.back {
+  position: relative;
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: center;
+}
+.frame-21-container,
+.frame-211 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.frame-211 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs) var(--padding-6xl);
+  background-color: var(--color-whitesmoke);
+  border-radius: var(--br-3xs);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+.frame-21-container {
+  align-self: stretch;
+  overflow: hidden;
+  align-items: flex-end;
+  padding: var(--padding-base) 0;
+}
+.macbook-air-3,
+.macbook-air-3-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.macbook-air-3-child {
+  align-self: stretch;
+  height: 84px;
+  overflow: hidden;
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding: 0 var(--padding-2xl);
+  box-sizing: border-box;
+}
+.macbook-air-3 {
+  position: relative;
+  background: linear-gradient(180deg, #9181f4, #5038ed);
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  gap: 75px;
+}
+@media screen and (max-width: 420px) {
+  .frame-211 {
+    width: auto;
+    align-self: unset;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
 }
