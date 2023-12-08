@@ -12,7 +12,9 @@ if (isset($_POST['logout-button'])) {
 
 if (isset($_POST['model-button'])) {
   $modelName = $_POST['model-name'];
-  $modelData = fetchModel($_SESSION['user'], $modelName);
+  $model = fetchModel($_SESSION['user'], $modelName);
+  print_r($model);
+  $modelData = $model['centroids'];
   print_r($modelData);
 
   $_SESSION['model-data'] = $modelData;

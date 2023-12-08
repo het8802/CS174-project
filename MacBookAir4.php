@@ -12,6 +12,11 @@ if (isset($_POST['logout-button'])) {
   logout();
 }
 
+if (isset($_POST['back-button'])){
+  header('Location: MacBookAir3.php');
+  exit;
+}
+
 if (isset($_POST['submit'])) {
   
   $file = $_FILES['file-upload']['tmp_name'];
@@ -30,11 +35,11 @@ if (isset($_POST['submit'])) {
   else {
     $twoDArray = processFile($file);
   }
+  echo "model data: <br>";
   print_r($_SESSION['model-data']);
-  $model = json_decode($_SESSION['model-data'], true)['centroids']; //convert the string to json first and then access the centroids
-  $testResults = testModel($twoDArray, $model);
-  // header("Location: MacBookAir5.php");
-  // exit();
+  $testResults = testModel($twoDArray, $_SESSION['model-data']);
+  header("Location: MacBookAir5.php");
+  exit();
 }
 ?>
 
@@ -138,7 +143,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="frame-wrapper11">
           <div class="frame-21-wrapper1">
-            <button class="frame-215" id="your-models-button">
+            <button class="frame-215" type="submit" name="back-button">
               <b class="back2">BACK</b>
             </button>
           </div>
@@ -150,6 +155,7 @@ if (isset($_POST['submit'])) {
       var frame21 = document.getElementById("your-models-button");
       if (frame21) {
         frame21.addEventListener("click", function (e) {
+          alert("script");
           window.location.href = "./MacBookAir2.php";
         });
       }

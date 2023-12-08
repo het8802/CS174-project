@@ -12,6 +12,7 @@ function trainModel($data, $clusterNumber) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to train the model
 
+
     $command = '/opt/homebrew/bin/python3 ./train_model.py ' . escapeshellarg(json_encode($data)) . " ". escapeshellarg(json_encode($clusterNumber)) . ' 2>&1';
     $result = shell_exec($command);
 
@@ -32,15 +33,15 @@ function trainModel($data, $clusterNumber) {
     }
 
     // Storing JSON string in session
-    $_SESSION['model-data'] = $jsonResult;
+    $modelData = $trainedModel['centroids'];
+    $_SESSION['model-data'] = json_encode($modelData);
 }
 
 function testModel($data, $model) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to test the model
-    print_r(json_encode($data));
-    print_r(json_encode($model));
-    $command = "/opt/homebrew/bin/python3 ./test_model.py " . escapeshellarg(json_encode($data)) . " " . escapeshellarg(json_encode($model));
+
+    $command = "/opt/homebrew/bin/python3 ./test_model.py " . escapeshellarg(json_encode($data)) . " " . escapeshellarg($model);
 
     $result = shell_exec($command);
     print_r($result);
@@ -62,7 +63,6 @@ function testModel($data, $model) {
         echo "No JSON found in the output<br>";
         handleError($result);
     }
-    print_r($testResults);
     return $testResults;
 }
 
@@ -138,10 +138,11 @@ function fetchModels($username) {
 
 function fetchModel($username, $modelName) {
     $model = executeQuery(
-        "SELECT id, centroids FROM MODELS WHERE username = ? AND model_name = ?",
+        "SELECT centroids FROM MODELS WHERE username = ? AND model_name = ?",
         [$username, $modelName],
         "ss"
     );
+    print_r($model[0]);
     return $model[0];   //executeQuery return one data point but in 2D format, we return 1D array
 }
 
