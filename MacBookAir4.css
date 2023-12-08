@@ -1,4 +1,4 @@
-.test-your-data {
+/* .test-your-data {
   position: absolute;
   top: 238px;
   left: 510px;
@@ -137,6 +137,7 @@
   width: 329px;
   height: 26px;
   font-size: var(--font-size-xl);
+  padding: 10px;
 }
 .frame4 {
   border: 0;
@@ -199,4 +200,254 @@
   font-size: var(--font-size-13xl);
   color: var(--color-white);
   font-family: var(--font-poppins);
+} */
+
+
+.k-means-clustering2 {
+  position: relative;
+}
+.frame6 {
+  border-radius: var(--br-xl);
+  background-color: var(--color-gray-300);
+  backdrop-filter: blur(13.6px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-6xl);
+}
+.logout3 {
+  position: relative;
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: left;
+}
+.frame-button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-2xs) var(--padding-32xl);
+  background-color: var(--color-tomato);
+  border-radius: var(--br-3xs);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.frame-parent3,
+.macbook-air-7-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.frame-parent3 {
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+.macbook-air-7-inner {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--padding-6xl);
+  text-align: center;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-poppins);
+}
+.test-your-data,
+.upload-file1 {
+  font-size: var(--font-size-13xl);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+}
+.test-your-data {
+  align-self: stretch;
+  position: relative;
+  text-align: center;
+  height: 49px;
+  flex-shrink: 0;
+}
+.upload-file1 {
+  position: absolute;
+  top: 19px;
+  left: 75px;
+  text-align: left;
+  width: 182px;
+  height: 46px;
+}
+.upload-file-container {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: var(--color-whitesmoke);
+  position: relative;
+  border-radius: var(--br-3xs);
+  width: 331px;
+  height: 85px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frame-wrapper7 {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.or2 {
+  position: absolute;
+  top: 0;
+  left: 149px;
+  font-size: var(--font-size-xl);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-white);
+  text-align: left;
+  width: 31px;
+  height: 26px;
+}
+.frame-child6,
+.frame-child7 {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  background-color: var(--color-gainsboro);
+  width: 138px;
+  height: 1px;
+}
+.frame-child7 {
+  top: 13px;
+  left: 191px;
+}
+.or-container {
+  position: relative;
+  width: 329px;
+  height: 26px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.frame-textarea,
+.test1 {
+  font-family: var(--font-poppins);
+}
+.frame-textarea {
+  border: 0;
+  background-color: var(--color-whitesmoke);
+  display: flex;
+  font-size: var(--font-size-mini);
+  border-radius: var(--br-3xs);
+  width: 510px;
+  height: 186px;
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+}
+.frame-textarea::placeholder {
+  position: absolute;
+  font-family: var(--font-poppins);
+  font-size: var(--font-size-mini);
+  display: inline-block;
+  font-family: var(--font-poppins);
+  color: var(--color-silver);
+  text-align: left;
+  width: 231px;
+  height: 22px;
+}
+.test1 {
+  position: absolute;
+  top: calc(50% - 19.4px);
+  left: calc(50% - 29px);
+  font-size: var(--font-size-6xl);
+  color: var(--color-black);
+  text-align: center;
+}
+.test-container {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: var(--color-whitesmoke);
+  position: relative;
+  border-radius: var(--br-3xs);
+  width: 205px;
+  height: 62px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.back2 {
+  position: relative;
+  font-size: var(--font-size-3xl);
+  font-family: var(--font-poppins);
+  color: var(--color-black);
+  text-align: center;
+}
+.frame-21-wrapper1,
+.frame-215 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.frame-215 {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-3xs) var(--padding-6xl);
+  background-color: var(--color-whitesmoke);
+  border-radius: var(--br-3xs);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+.frame-21-wrapper1 {
+  align-self: stretch;
+  overflow: hidden;
+  align-items: flex-end;
+  padding: var(--padding-base) 0;
+}
+.frame-wrapper11 {
+  align-self: stretch;
+  height: 84px;
+  flex-shrink: 0;
+  padding: 0 var(--padding-2xl);
+  box-sizing: border-box;
+}
+.frame-wrapper11,
+.macbook-air-7,
+.test-your-data-parent {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.test-your-data-parent {
+  align-self: stretch;
+  flex: 1;
+  padding: var(--padding-6xl);
+}
+.macbook-air-7 {
+  position: relative;
+  background: linear-gradient(180deg, #9181f4, #5038ed);
+  width: 100%;
+  height: 832px;
+}
+@media screen and (max-width: 420px) {
+  .frame-parent3 {
+    flex-direction: column;
+    gap: var(--gap-3xs);
+  }
+  .frame-215 {
+    width: auto;
+    align-self: unset;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .test-your-data-parent {
+    gap: var(--gap-3xs);
+  }
 }

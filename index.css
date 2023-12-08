@@ -16,6 +16,7 @@
   border-radius: var(--br-base);
   width: 364px;
   height: 52px;
+  padding-left: 15px;
 }
 .frame-child {
   font-family: var(--font-poppins);
@@ -41,6 +42,7 @@
   border-radius: var(--br-base);
   width: 364px;
   height: 52px;
+  padding-left: 15px;
 }
 .login-now {
   top: 17px;

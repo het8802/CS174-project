@@ -16,7 +16,7 @@ function connectDatabase() {
 
 function closeConnection() {
     global $connection;
-    $connection = null;
+    $connection->close();
 }
 
 function executeQuery($query, $params = [], $paramTypes = "") {

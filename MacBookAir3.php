@@ -13,6 +13,7 @@ if (isset($_POST['logout-button'])) {
 if (isset($_POST['model-button'])) {
   $modelName = $_POST['model-name'];
   $modelData = fetchModel($_SESSION['user'], $modelName);
+  print_r($modelData);
 
   $_SESSION['model-data'] = $modelData;
   header("Location: MacBookAir4.php");

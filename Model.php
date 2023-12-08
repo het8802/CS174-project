@@ -8,11 +8,11 @@ ini_set('display_errors',1);
 $conn = connectDatabase();
 
 
-function trainModel($data) {
+function trainModel($data, $clusterNumber) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to train the model
 
-    $command = '/opt/homebrew/bin/python3 ./train_model.py ' . escapeshellarg(json_encode($data)) . ' 2>&1';
+    $command = '/opt/homebrew/bin/python3 ./train_model.py ' . escapeshellarg(json_encode($data)) . " ". escapeshellarg(json_encode($clusterNumber)) . ' 2>&1';
     $result = shell_exec($command);
 
     // Separate JSON from warnings/errors
@@ -38,11 +38,12 @@ function trainModel($data) {
 function testModel($data, $model) {
     // Assuming $data is already in the required format for the Python script
     // Execute Python script to test the model
-    echo "<br>test model reached";
-
+    print_r(json_encode($data));
+    print_r(json_encode($model));
     $command = "/opt/homebrew/bin/python3 ./test_model.py " . escapeshellarg(json_encode($data)) . " " . escapeshellarg(json_encode($model));
 
     $result = shell_exec($command);
+    print_r($result);
 
     // Separate JSON from warnings/errors
     if (preg_match('/\{.*\}/', $result, $matches)) {
@@ -61,6 +62,8 @@ function testModel($data, $model) {
         echo "No JSON found in the output<br>";
         handleError($result);
     }
+    print_r($testResults);
+    return $testResults;
 }
 
 function saveTrainingDataInModels($data, $username, $modelName) {
@@ -88,12 +91,12 @@ function saveTrainingDataInModels($data, $username, $modelName) {
 
 // Process the file and convert it to a 2D array
 function processFile($file) {
-    return processText(trim(file_get_contents($file)));
+    return processText(file_get_contents($file));
 }
 
 function processText($string) {
     // Process the string and convert it to a 2D array
-    // Placeholder for text processing
+    $string = trim($string);
 
     // Split the input string into lines
     $lines = explode("\n", $string);

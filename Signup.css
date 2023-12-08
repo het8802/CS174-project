@@ -51,6 +51,7 @@
   border-radius: var(--br-base);
   width: 364px;
   height: 52px;
+  padding-left: 15px;
 }
 .frame-child22,
 .frame-child23 {
@@ -75,6 +76,7 @@
   border-radius: var(--br-base);
   width: 364px;
   height: 52px;
+  padding-left: 15px;
 }
 .frame18 {
   left: 158px;

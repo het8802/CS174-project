@@ -2,13 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once "Database.php";
-require_once "DatabaseConfig.php";
 
-$username;
-$email;
-$hashedPassword;
-$salt;
-$modelsList;
 $conn = connectDatabase();
 
 function createAccount($username, $email, $password) {
@@ -89,7 +83,6 @@ function handleError($error) {
     // Handle errors (logging, displaying error messages, etc.)
     if (is_string($error)){
         echo '<script>alert("'.$error.'");</script>';
-        die();
     }
 }
 

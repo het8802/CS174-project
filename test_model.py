@@ -7,9 +7,6 @@ from sklearn.cluster import KMeans
 data = json.loads(sys.argv[1])
 centroids = json.loads(sys.argv[2])  # centroids passed as a second argument
 
-# Convert centroids to numpy array
-# centroids = np.array(centroids)
-
 # Initialize KMeans with pre-trained centroids
 kmeans = KMeans(n_clusters=len(centroids), n_init=1)
 kmeans.fit(centroids)   #fitting the model on centroids
@@ -18,4 +15,4 @@ kmeans.fit(centroids)   #fitting the model on centroids
 predictions = kmeans.predict(data)
 
 # Output the predictions
-print(json.dumps({'predictions': predictions.tolist()}))
+print(json.dumps({'Clusters': predictions.tolist()}))

@@ -79,6 +79,7 @@
   position: absolute;
   border-radius: var(--br-3xs);
   background-color: var(--color-whitesmoke);
+  padding-left: 10px;
 }
 .frame7 {
   border: 0;
